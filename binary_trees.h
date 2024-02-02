@@ -1,7 +1,16 @@
 #ifndef BINARY_TREES_H
 #define BINARY_TREES_H
 
+
 #include <stdlib.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
+#include <limits.h>
+
 /**
  * struct binary_trees - Binary tree node
  * @n: Integer stored in the node
@@ -21,6 +30,11 @@ typedef struct binary_tree_s
 }binary_tree_t;
 
 void binary_tree_print(const binary_tree_t *);
+
+typedef struct binary_tree_s binary_tree_t;
+typedef struct binary_tree_s bst_t;
+typedef struct binary_tree_s avl_t;
+typedef struct binary_tree_s heap_t;
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -52,6 +66,21 @@ void print_given_level(const binary_tree_t *tree, void (*func)(int), int level);
 int binary_tree_is_complete(const binary_tree_t *tree);
 int is_complete_recursive(const binary_tree_t *tree, size_t index, size_t nodes);
 size_t binary_tree_size(const binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
+int is_bst_util(const binary_tree_t *tree, const binary_tree_t *prev);
+int binary_tree_is_bst(const binary_tree_t *tree);
+bst_t *bst_insert(bst_t **tree, int value);
+bst_t *array_to_bst(int *array, size_t size);
+bst_t *array_to_bst_helper(int *array, size_t start, size_t end, bst_t *parent);
+bst_t *bst_search(const bst_t *tree, int value);
+bst_t *bst_remove(bst_t *root, int value)
+int binary_tree_is_avl(const binary_tree_t *tree);
+avl_t *avl_insert(avl_t **tree, int value);
+
+int height(const binary_tree_t *tree);
+int max(int a, int b);
+
 
 
 #endif
